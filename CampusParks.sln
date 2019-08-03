@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{68c34e66-76d8-4e97-96e8-a95b9b6c0b2b}") = "CampusParks", "CampusParks\CampusParks.csproj", "{966362bf-0170-4195-aa0d-0dbfbb0b4bce}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{966362bf-0170-4195-aa0d-0dbfbb0b4bce}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{966362bf-0170-4195-aa0d-0dbfbb0b4bce}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{966362bf-0170-4195-aa0d-0dbfbb0b4bce}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{966362bf-0170-4195-aa0d-0dbfbb0b4bce}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = CampusParks\CampusParks.csproj
+	EndGlobalSection
+EndGlobal
