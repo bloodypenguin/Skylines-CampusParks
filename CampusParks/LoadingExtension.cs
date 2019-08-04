@@ -24,6 +24,7 @@ namespace CampusParks
             Transpile(nameof(ParkBuildingAI.EndRelocating), transpiler);
             Transpile("FindRoadAccess", transpiler);
             Transpile("HandleCrime", transpiler);
+            Transpile("HandleCommonConsumption", transpiler);
             Transpile("HandleDead2", transpiler);
             Transpile(nameof(ParkBuildingAI.ParkAreaChanged), transpiler);
             Transpile(nameof(ParkBuildingAI.ReleaseBuilding), transpiler);
