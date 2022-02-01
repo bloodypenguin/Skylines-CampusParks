@@ -5,9 +5,9 @@ namespace CampusParks
 {
     public class ChangeLoadingImageMod : IUserMod
     {
-        public string Name => "Campus Parks r1.0.2";
+        public string Name => "Campus Parks r2.0.0";
 
-        public string Description => "Allows to place parks on pedestrian paths in campuses";
+        public string Description => "Allows to place parks on pedestrian paths in campuses, airports and industry zones";
 
         public void OnEnabled()
         {

@@ -9,7 +9,10 @@ namespace CampusParks
     {
         private static bool IsPark(ref DistrictPark park)
         {
-            return DistrictPark.IsParkType(park.m_parkType) || DistrictPark.IsCampusType(park.m_parkType);
+            return DistrictPark.IsParkType(park.m_parkType)
+                   || DistrictPark.IsCampusType(park.m_parkType)
+                   || DistrictPark.IsAirportType(park.m_parkType)
+                   || DistrictPark.IsIndustryType(park.m_parkType);
         }
 
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
