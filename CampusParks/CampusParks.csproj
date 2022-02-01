@@ -10,6 +10,7 @@
     <RootNamespace>CampusParks</RootNamespace>
     <AssemblyName>CampusParks</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -37,16 +38,6 @@
     <None Include="CampusParks.ruleset" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers">
-      <Version>2.9.3</Version>
-    </PackageReference>
-    <PackageReference Include="StyleCop.Analyzers">
-      <Version>1.1.118</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <HintPath>C:\Games\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\mscorlib.dll</HintPath>
     </Reference>
@@ -68,8 +59,13 @@
     <Reference Include="ColossalManaged">
       <HintPath>D:\SteamLibrary\SteamApps\common\Cities_Skylines\Cities_Data\Managed\ColossalManaged.dll</HintPath>
     </Reference>
-    <Reference Include="0Harmony, Version=1.2.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)packages\Lib.Harmony.1.2.0.1\lib\net35\0Harmony.dll</HintPath>
+    <Reference Include="CitiesHarmony.API">
+      <HintPath>..\packages\CitiesHarmony.API.2.0.0\lib\net35\CitiesHarmony.API.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CitiesHarmony.Harmony">
+      <HintPath>..\packages\CitiesHarmony.Harmony.2.0.4\lib\net35\CitiesHarmony.Harmony.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +81,6 @@
   <PropertyGroup>
     <PostBuildEvent>if not exist "$(LOCALAPPDATA)\Colossal Order\Cities_Skylines\Addons\Mods\$(ProjectName)" mkdir "$(LOCALAPPDATA)\Colossal Order\Cities_Skylines\Addons\Mods\$(ProjectName)"
 xcopy /y "$(TargetPath)" "$(LOCALAPPDATA)\Colossal Order\Cities_Skylines\Addons\Mods\$(ProjectName)"
-xcopy /y "$(SolutionDir)packages\Lib.Harmony.1.2.0.1\lib\net35\0Harmony.dll" "$(LOCALAPPDATA)\Colossal Order\Cities_Skylines\Addons\Mods\$(ProjectName)"</PostBuildEvent>
+xcopy /y "$(SolutionDir)\packages\CitiesHarmony.API.2.0.0\lib\net35\CitiesHarmony.API.dll" "$(LOCALAPPDATA)\Colossal Order\Cities_Skylines\Addons\Mods\$(ProjectName)"</PostBuildEvent>
   </PropertyGroup>
 </Project>

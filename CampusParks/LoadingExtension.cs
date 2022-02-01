@@ -1,21 +1,26 @@
 using System;
-using System.Net;
-using System.Net.Security;
 using System.Reflection;
-using Harmony;
+using CitiesHarmony.API;
+using HarmonyLib;
 using ICities;
-using UnityEngine;
 
 namespace CampusParks
 {
     public class LoadingExtension : LoadingExtensionBase
     {
-        private HarmonyInstance HarmonyInstance;
+        private const string HarmonyId = "github.com/bloodypenguin/Skylines-CampusParks";
+        private static Harmony _harmonyInstance;
 
         public override void OnCreated(ILoading loading)
         {
-            HarmonyInstance = HarmonyInstance.Create("github.com/bloodypenguin/Skylines-CampusParks");
-   
+            if (!HarmonyHelper.IsHarmonyInstalled)
+            {
+                return;
+            }
+
+            _harmonyInstance = new Harmony(HarmonyId);
+            _harmonyInstance.PatchAll();
+
             var transpiler = typeof(ParkBuildingAIPatch).GetMethod(nameof(ParkBuildingAIPatch.Transpiler), BindingFlags.Static | BindingFlags.Public);
             Transpile(nameof(ParkBuildingAI.BeginRelocating), transpiler);
             Transpile(nameof(ParkBuildingAI.BuildingLoaded), transpiler);
@@ -28,14 +33,13 @@ namespace CampusParks
             Transpile("HandleDead2", transpiler);
             Transpile(nameof(ParkBuildingAI.ParkAreaChanged), transpiler);
             Transpile(nameof(ParkBuildingAI.ReleaseBuilding), transpiler);
-            
         }
 
-        private void Transpile(string methodName , MethodInfo transpiler)
+        private void Transpile(string methodName, MethodInfo transpiler)
         {
             try
             {
-                HarmonyInstance.Patch(
+                _harmonyInstance.Patch(
                     typeof(ParkBuildingAI).GetMethod(methodName,
                         BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic),
                     transpiler: new HarmonyMethod(transpiler));
@@ -49,7 +53,12 @@ namespace CampusParks
 
         public override void OnReleased()
         {
-            HarmonyInstance?.UnpatchAll();
+            if (!HarmonyHelper.IsHarmonyInstalled)
+            {
+                return;
+            }
+
+            _harmonyInstance?.UnpatchAll();
         }
     }
 }
